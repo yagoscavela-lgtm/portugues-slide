@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desafio de Português – 2º Ano</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+<style>
+:root{--n:#2b2d5b;--bg:#fff6e0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--n);font-family:Fredoka,"Trebuchet MS",Verdana,sans-serif;min-height:100vh;overflow-x:hidden}
+.d{position:fixed;border-radius:50%;z-index:0}
+.wrap{position:relative;z-index:1;max-width:930px;margin:0 auto;padding:16px 14px 40px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+h1{margin:0;font-size:clamp(17px,4vw,26px);font-weight:700}
+#snd{font-size:22px;background:#fff;border:3px solid var(--n);border-radius:14px;padding:4px 12px;cursor:pointer}
+.box{background:#fff;border:4px solid var(--n);border-radius:24px;box-shadow:0 6px 0 var(--n)}
+.pbox{padding:14px 18px;margin-bottom:18px}
+.row{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:18px}
+.star{background:#ffe08a;border:3px solid var(--n);border-radius:20px;padding:1px 14px}
+.prog{height:16px;background:#e6e3f5;border-radius:10px;overflow:hidden;margin-top:10px}
+.prog i{display:block;height:100%;width:0;background:#20b2aa;border-radius:10px;transition:width .4s}
+.qbox{position:relative;padding:22px 26px 22px;margin-bottom:18px}
+.pen{position:absolute;right:22px;top:-30px;width:38px;height:78px}
+.tag{display:inline-block;background:#8f6df0;color:#fff;border-radius:20px;padding:3px 16px;font-size:14px;font-weight:700;letter-spacing:.5px}
+.q{font-size:clamp(20px,4.2vw,32px);font-weight:700;line-height:1.3;margin:14px 0 6px;max-width:88%}
+.txt{background:#f6f3ff;border:3px dashed #b9a8f5;border-radius:16px;padding:12px 16px;margin:12px 0;font-size:clamp(16px,3.2vw,20px);font-weight:500;line-height:1.5;white-space:pre-line}
+.vis{display:flex;align-items:center;justify-content:center;gap:18px;font-size:68px;margin-top:6px}
+.eq{color:#3d8bff;font-weight:700;font-size:56px}
+.ph{width:90px;height:90px;border:3px dashed var(--n);border-radius:18px;display:grid;place-items:center;font-size:52px;color:#8f6df0;font-weight:700}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.opts{grid-template-columns:1fr}.q{max-width:100%;margin-top:30px}}
+.opt{display:flex;align-items:center;gap:14px;font:inherit;font-weight:700;font-size:clamp(17px,3.6vw,26px);color:#fff;border:4px solid var(--n);border-radius:24px;box-shadow:0 6px 0 var(--n);padding:14px 18px;cursor:pointer;text-align:left;min-height:84px}
+.c0{background:#3d8bff}.c1{background:#ff9f1c;color:var(--n)}.c2{background:#8f6df0}.c3{background:#20b2aa}
+.l{flex:none;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--n);border:3px solid var(--n);display:grid;place-items:center;font-size:22px}
+.opt:active:not(:disabled){transform:translateY(4px);box-shadow:0 2px 0 var(--n)}
+.ok{background:#2ecc71!important;color:#fff!important}
+.no{background:#ff4d6d!important;color:#fff!important;animation:sh .4s}
+.opt:disabled:not(.ok):not(.no){opacity:.55}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.msg{min-height:34px;font-size:22px;font-weight:700;text-align:center;margin:16px 0 0}
+.btn{display:block;margin:12px auto 0;font:inherit;font-weight:700;font-size:20px;background:#ff9f1c;color:var(--n);border:4px solid var(--n);border-radius:26px;box-shadow:0 6px 0 var(--n);padding:12px 30px;cursor:pointer}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--n)}
+.hide{display:none!important}
+.end{text-align:center;padding:30px 20px}.end h2{font-size:clamp(24px,6vw,36px);margin:8px 0}.big{font-size:80px}
+</style></head><body>
+<div class="d" style="width:120px;height:120px;background:#ffe8a6;left:-10px;top:60px"></div>
+<div class="d" style="width:100px;height:100px;background:#e3d9ff;right:6%;top:14px"></div>
+<div class="d" style="width:180px;height:180px;background:#c9e2ff;right:-40px;top:47%"></div>
+<div class="d" style="width:100px;height:100px;background:#e3d9ff;right:8%;bottom:-20px"></div>
+<div class="d" style="width:120px;height:120px;background:#ffe8a6;left:6%;bottom:-30px"></div>
+<div class="wrap">
+<header><h1>🎯 DESAFIO DE PORTUGUÊS – 2º ANO</h1><button id="snd" title="Som">🔊</button></header>
+<div class="box pbox"><div class="row"><span id="cnt"></span><span class="star" id="sc">⭐ 0</span></div><div class="prog"><i id="pg"></i></div></div>
+<div id="game">
+<div class="box qbox">
+<svg class="pen" viewBox="0 0 38 78"><rect x="3" y="3" width="32" height="12" rx="4" fill="#ff7a9c" stroke="#2b2d5b" stroke-width="3"/><rect x="3" y="13" width="32" height="42" fill="#ffd23f" stroke="#2b2d5b" stroke-width="3"/><path d="M3 55h32l-16 20z" fill="#ffe8b8" stroke="#2b2d5b" stroke-width="3" stroke-linejoin="round"/><circle cx="12" cy="30" r="3" fill="#2b2d5b"/><circle cx="26" cy="30" r="3" fill="#2b2d5b"/><path d="M13 40q6 6 12 0" fill="none" stroke="#2b2d5b" stroke-width="3" stroke-linecap="round"/></svg>
+<span class="tag" id="tag"></span>
+<div class="q" id="q"></div>
+<div class="txt hide" id="txt"></div>
+<div class="vis hide" id="vis"></div>
+</div>
+<div class="opts" id="opts"></div>
+<div class="msg" id="msg"></div>
+<button class="btn hide" id="next">PRÓXIMA QUESTÃO ➜</button>
+</div>
+<div class="box end hide" id="end"></div>
+</div>
+<script>
+const Q=[
+["RIMAS","Qual palavra rima com GATO?",["PATO","BOLA","CASA","LUA"],0],
+["RIMAS","Qual palavra rima com CORAÇÃO?",["BOLA","FEIJÃO","CASA","SAPO"],1],
+["RIMAS","Qual palavra rima com LUA?",["SOL","MAR","RUA","PÃO"],2],
+["RIMAS","Qual palavra rima com GALINHA?",["JANELA","MADRINHA","PORTA","SAPO"],1],
+["NOMES DE FIGURAS","Veja as figuras. Quais são os nomes delas?",["ÁGUIA – CARROSSEL","AVIADOR – CARRETA","AVIÃO – CARRO","AVE – CARROÇA"],2,"","✈️ 🚗"],
+["NOMES DE FIGURAS","Qual é o nome desta figura?",["GATO","CACHORRO","PATO","RATO"],1,"","🐶"],
+["NOMES DE FIGURAS","Qual é o nome desta figura?",["OSSO","PEDRA","PAU","BOLA"],0,"","🦴"],
+["NOMES DE FIGURAS","Qual é o nome desta figura?",["PATO","GALINHA","RATO","VACA"],2,"","🐭"],
+["PALAVRAS","Quantas sílabas tem a palavra BO-LA?",["1","2","3","4"],1],
+["PALAVRAS","Qual palavra começa com a letra B?",["CASA","BOLA","DADO","FOCA"],1],
+["FRASES","Leia a frase e escolha a figura que mostra o que está escrito.",["Menino chutando uma bola","Crianças no balanço","Menino brincando com um carrinho","Menino lendo um livro"],2,"O MENINO BRINCA COM O CARRINHO."],
+["FRASES","Qual é a palavra final dessa frase?",["DESABROCHANDO","ESTÃO","FLORES","JARDIM"],0,"AS FLORES DO JARDIM ESTÃO DESABROCHANDO."],
+["FRASES","Qual é a primeira palavra dessa frase?",["CARRINHO","O","MENINO","BRINCA"],1,"O MENINO BRINCA COM O CARRINHO."],
+["FRASES","Quantas palavras tem a frase abaixo?",["3","4","5","2"],1,"A BOLA É AZUL."],
+["FRASES","Qual frase está escrita na ordem certa?",["bola a chuta menino o","O menino chuta a bola.","chuta bola o a menino","menino bola chuta a o"],1],
+["LEITURA","Segundo o texto, para não cair, a raposa agarrou-se a…",["uma colina","uma corda","uma pedra","um arbusto"],3,"A Raposa e o Espinho\nUma raposa escorregou numa colina. Para não cair, agarrou-se a um arbusto cheio de espinhos, que feriram suas patas."],
+["LEITURA","Qual é a moral da história?",["Nunca peça ajuda a quem costuma fazer mal.","Raposas gostam de subir colinas.","Arbustos são macios.","Sempre corra na colina."],0,"A Raposa e o Espinho\nO arbusto disse: “Não sabes que é meu costume magoar os outros?”"],
+["GÊNEROS","O texto “Elefantinho colorido” serve para…",["emocionar o leitor","ensinar uma brincadeira","informar sobre os elefantes","mostrar uma receita"],1,"Elefantinho colorido\nCOMO BRINCAR: uma criança fica de costas e diz “Elefantinho colorido”. Os outros perguntam: “Que cor?”…"],
+["TIRINHA","Na tirinha, o Cebolinha quis dizer que…",["a Mônica tem muitos amigos","brincar com os pais é divertido","somente os pais são verdadeiros amigos","só os pais da Mônica gostam dela"],3,"Mônica: “De agora em diante só vou ser amiga de quem gosta de mim!”\nCebolinha: “E você não vai ficar triste de brincar só com seus pais?”"],
+["LEITURA","O texto fala principalmente sobre…",["amigas que brincam na piscina","como fazer castelos de areia","duas amigas que brincam na areia","os animais que vivem no mar"],2,"Brincadeira na areia\nCarolina e Mara são grandes amigas. Na praia, elas brincam com a areia molhada, formando enormes castelos e bichinhos com forminhas."],
+["LEITURA","De acordo com o texto, a águia…",["continuou pequenina","cresceu e agora voa muito alto","cresceu, mas não pode voar","tem as asas pequenas"],1,"Sempre mais alto\nSou uma águia. Quando era pequenina, não saía do ninho. Agora posso voar esticando minhas longas asas, até por cima das nuvens!"],
+["CARTAZ","O assunto principal do texto é…",["a dificuldade para respirar","a transmissão da covid-19","como evitar a tosse","os sintomas da covid-19"],3,"ATENÇÃO PARA OS SINTOMAS DA COVID-19\nSe você sentir: febre, tosse seca, cansaço, dor de garganta, dificuldade pra respirar, dor de cabeça, perda de olfato e de paladar."],
+["TIRINHA","Na tirinha, Cascão…",["acha que os animais não precisam de banho","acredita que os animais precisam de banho","concorda com a atitude dos amigos","leva seu porquinho para tomar banho"],0,"Os amigos dão banho em seus bichinhos e dizem: “Depois, eles dizem que gostam dos animais.” Cascão aparece feliz com seu porquinho sujinho."],
+["LEITURA","As aranhas que lançam veneno nas presas são chamadas de…",["cuspideiras","encrenqueiras","lançadeiras","venenosas"],0,"Algumas aranhas cospem veneno! As que lançam veneno sobre suas presas são chamadas cuspideiras."],
+["CARTA","Sara e Cristina…",["em breve vão encontrar a avó","estão na praia com a avó","não gostam de viajar","querem cozinhar para a avó"],0,"Querida avó, estamos adorando a praia. Eu e Cristina esperamos a senhora aqui no próximo fim de semana. Temos muitas saudades!\nUm grande beijo, Sara."],
+["ANÚNCIO","Esse texto serve para…",["avisar sobre a venda de um shopping","divulgar a venda de carros","anunciar a venda ou o aluguel de apartamentos","convidar para passear no shopping"],2,"OPORTUNIDADE\nVENDE-SE OU ALUGA-SE apartamentos de 2 quartos, sendo 1 suíte. Excelente localização, próximo ao Shopping Center."],
+["INSTRUÇÕES","O texto “Um presente dobradinho” foi escrito para…",["ensinar a fazer uma receita","fazer propaganda de material escolar","mostrar como se faz um presente dobradinho","vender um presente"],2,"O que você vai precisar: papel, copo com água, canetinha, tesoura e régua.\nDesenhe uma estrela, escreva uma frase, dobre as pontas e coloque na água."],
+["BILHETE","Quem escreveu o bilhete?",["a Márcia","a mãe de Lia","a mãe de Márcia","a Lia"],3,"Mãe,\nHoje chegarei mais tarde. Vou estudar na casa da Márcia.\nBeijos, Lia\nP.S.: Já lavei todas as louças."],
+["LEITURA","Na coleta seletiva, a lata VERDE é para…",["papel","metal","vidro","plástico"],2,"Reciclando o lixo\nAzul – Papel\nAmarelo – Metal\nVerde – Vidro\nVermelho – Plástico\nEsse tipo de coleta se chama Coleta Seletiva."],
+["ESCRITA","Uma menina tapa os olhos de um menino, e os dois riem. Qual frase conta essa cena?",["O menino come uma maçã.","A menina tapa os olhos do menino.","Os dois dormem no sofá.","O menino pula corda."],1,"","🙈😄"]
+];
+const $=id=>document.getElementById(id);
+let i=0,score=0,on=true,ac,done=false,tried=false;
+function tone(f,d,t="sine",dl=0){if(!on)return;ac=ac||new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(ac.destination);const s=ac.currentTime+dl;g.gain.setValueAtTime(.2,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.start(s);o.stop(s+d)}
+const win=()=>{tone(523,.15,"triangle");tone(659,.15,"triangle",.12);tone(784,.3,"triangle",.24)};
+const lose=()=>{tone(200,.25,"sawtooth");tone(150,.4,"sawtooth",.2)};
+const fanfare=()=>[523,659,784,1047,784,1047].forEach((f,k)=>tone(f,.2,"triangle",k*.15));
+function confetti(cols){for(let k=0;k<60;k++){const p=document.createElement("i");const s=8+Math.random()*8;p.style.cssText=`position:fixed;z-index:9;pointer-events:none;left:${Math.random()*100}vw;top:-20px;width:${s}px;height:${s*1.4}px;background:${cols[k%cols.length]};border-radius:2px`;document.body.appendChild(p);const x=(Math.random()-.5)*200;p.animate([{transform:"translate(0,0) rotate(0)",opacity:1},{transform:`translate(${x}px,${innerHeight+40}px) rotate(${Math.random()*720}deg)`,opacity:1}],{duration:1400+Math.random()*1200,easing:"ease-in",delay:Math.random()*300}).onfinish=()=>p.remove()}}
+function show(){
+ done=false;tried=false;const [c,q,o,a,t,f]=Q[i];
+ $("tag").textContent=c;$("q").textContent=q;$("msg").textContent="";$("next").classList.add("hide");
+ $("cnt").textContent=`Questão ${i+1} de ${Q.length}`;$("pg").style.width=(i/Q.length*100)+"%";
+ const T=$("txt");t?(T.textContent=t,T.classList.remove("hide")):T.classList.add("hide");
+ const V=$("vis");f?(V.innerHTML=`<span>${f}</span><span class="eq">=</span><span class="ph">?</span>`,V.classList.remove("hide")):V.classList.add("hide");
+ const idx=o.map((_,k)=>k).sort(()=>Math.random()-.5);
+ $("opts").innerHTML="";
+ idx.forEach((k,n)=>{const b=document.createElement("button");b.className="opt c"+n;b.innerHTML=`<span class="l">${"ABCD"[n]}</span><span></span>`;b.lastChild.textContent=o[k];b.dataset.r=k===a?1:0;b.onclick=()=>ans(b,k===a);$("opts").appendChild(b)});
+}
+function ans(b,ok){
+ if(done)return;if(ok)done=true;
+ document.querySelectorAll(".opt").forEach(x=>{if(ok)x.disabled=true});if(ok)b.classList.add("ok");else b.disabled=true;
+ if(ok){if(!tried)score++;win();confetti(["#2ecc71","#1c9c52","#7be495","#b8f2c9"]);$("msg").textContent="🎉 Muito bem! Resposta certa!";$("msg").style.color="#1c9c52"}
+ else{b.classList.add("no");tried=true;lose();confetti(["#ff4d6d","#d82f4d","#ff8fa3","#ffb3c1"]);$("msg").textContent="😅 Ops! Tente de novo!";$("msg").style.color="#d82f4d"}
+ $("sc").textContent="⭐ "+score;if(!ok)return;
+ $("next").textContent=i==Q.length-1?"VER RESULTADO 🏆":"PRÓXIMA QUESTÃO ➜";$("next").classList.remove("hide");
+}
+$("next").onclick=()=>{i++;i<Q.length?show():finish()};
+function finish(){
+ $("game").classList.add("hide");$("pg").style.width="100%";fanfare();
+ const p=score/Q.length,m=p>=.8?"PARABÉNS, CAMPEÃO DO PORTUGUÊS!":p>=.5?"MUITO BEM! QUASE LÁ!":"CONTINUE PRATICANDO!";
+ $("end").innerHTML=`<div class="big">${p>=.8?"🏆":p>=.5?"🌟":"📚"}</div><h2>${m}</h2><p style="font-size:24px;font-weight:600">Você acertou ${score} de ${Q.length} questões!</p><p style="font-size:18px">Continue aprendendo! Você é capaz de ir muito longe!</p><button class="btn" onclick="location.reload()">🔄 JOGAR DE NOVO</button>`;
+ $("end").classList.remove("hide");
+}
+$("snd").onclick=()=>{on=!on;$("snd").textContent=on?"🔊":"🔇"};
+show();
+</script></body></html>
